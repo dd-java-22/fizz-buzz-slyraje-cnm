@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.fizzbuzz;
 
+import java.util.Set;
+
 public class Main {
 
   static void main(String[] args) {
@@ -8,10 +10,18 @@ public class Main {
     if (args.length > 0 && (parsedArg = Integer.parseInt(args[0])) > 0) {
       max = parsedArg;
     }
-    FizzBuzz fizzBuzz = new FizzBuzz();
-    for (int i = 0; i < max; i++) {
-      System.out.println(new FizzBuzz().fizzBuzz(i + 1));
-
+    for (int i = 1; i < max; i++) {
+      Set<FizzBuzz> result = FizzBuzz.fizzBuzz(i);
+      if (result.contains(FizzBuzz.FIZZ)) {
+        System.out.print("Fizz");
+      }
+      if (result.contains(FizzBuzz.BUZZ)) {
+        System.out.print("Buzz");
+      }
+      if (result.isEmpty()) {
+        System.out.print(i);
+      }
+      System.out.println();
     }
   }
 

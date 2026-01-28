@@ -2,6 +2,8 @@ package edu.cnm.deepdive.fizzbuzz;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.EnumSet;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -11,18 +13,16 @@ class FizzBuzzTest {
   @ParameterizedTest
   @ValueSource(ints = {1,2,13})
   void fizzBuzz_Number(int position) {
-    FizzBuzz fizzBuzz = new FizzBuzz();
-    String actual = fizzBuzz.fizzBuzz(position);
-    String expected = Integer.toString(position);
+    Set<FizzBuzz> actual = FizzBuzz.fizzBuzz(position);
+    Set<FizzBuzz> expected = EnumSet.noneOf(FizzBuzz.class);
     assertEquals(expected, actual);
   }
 
   @ParameterizedTest
   @ValueSource(ints = {3,6,99})
   void fizzBuzz_Fizz(int position) {
-    FizzBuzz fizzBuzz = new FizzBuzz();
-    String actual = fizzBuzz.fizzBuzz(position);
-    String expected = "Fizz";
+    Set<FizzBuzz> actual = FizzBuzz.fizzBuzz(position);
+    Set<FizzBuzz> expected = EnumSet.of(FizzBuzz.FIZZ);
     assertEquals(expected, actual);
 
   }
@@ -30,9 +30,8 @@ class FizzBuzzTest {
   @ParameterizedTest
   @ValueSource(ints = {5,10,95})
   void fizzBuzz_Buzz(int position) {
-    FizzBuzz fizzBuzz = new FizzBuzz();
-    String actual = fizzBuzz.fizzBuzz(position);
-    String expected = "Buzz";
+    Set<FizzBuzz> actual = FizzBuzz.fizzBuzz(position);
+    Set<FizzBuzz> expected = EnumSet.of(FizzBuzz.BUZZ);
     assertEquals(expected, actual);
 
   }
@@ -40,9 +39,8 @@ class FizzBuzzTest {
   @ParameterizedTest
   @ValueSource(ints = {15,30,90})
   void fizzBuzz_FizzBuzz(int position) {
-    FizzBuzz fizzBuzz = new FizzBuzz();
-    String actual = fizzBuzz.fizzBuzz(position);
-    String expected = "FizzBuzz";
+    Set<FizzBuzz> actual = FizzBuzz.fizzBuzz(position);
+    Set<FizzBuzz> expected = EnumSet.of(FizzBuzz.FIZZ, FizzBuzz.BUZZ);
     assertEquals(expected, actual);
 
   }
